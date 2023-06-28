@@ -1,9 +1,13 @@
 package com.manndave.watchlist.models;
 
+import java.util.List;
+
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
 import jakarta.validation.constraints.Email;
@@ -38,9 +42,10 @@ public class User {
     
     
     // MANY TO ONE RELATIONSHIP
-//    @OneToMany(mappedBy="user_id", fetch=FetchType.LAZY)
-//    private List<CourseModel> ownedCourse;
+    @OneToMany(mappedBy="user_id", fetch=FetchType.LAZY)
+    private List<VideoModel> ownedVideos;
     
+
 	// DEFAULT CONSTRUCTOR
     public User() {}
 
@@ -75,13 +80,12 @@ public class User {
 	public void setConfirm(String confirm) {
 		this.confirm = confirm;
 	}
-
-//	public List<CourseModel> getOwnedCourse() {
-//		return ownedCourse;
-//	}
-//	public void setOwnedCourse(List<CourseModel> ownedCourse) {
-//		this.ownedCourse = ownedCourse;
-//	}
+	public List<VideoModel> getOwnedVideos() {
+		return ownedVideos;
+	}
+	public void setOwnedVideos(List<VideoModel> ownedVideos) {
+		this.ownedVideos = ownedVideos;
+	}
 	
 	
 }

@@ -76,19 +76,6 @@ public class UserController {
 			return "redirect:/";
 		}
 		
-		
-		
-		// --- DASHBOARD (RENDER) ---
-		@GetMapping("/dashboard")
-		public String dashboard(HttpSession session) {
-			// VERIFY USER AUTH -> ON EACH ROUTE!!
-			if(session.getAttribute("userId")==null) {
-				session.invalidate();
-				return "redirect:/";
-			}
-			return "dashboard.jsp";
-		}
-		
-		
+			
 		
 }
