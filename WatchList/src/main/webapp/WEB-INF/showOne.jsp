@@ -41,6 +41,7 @@
 		<hr>
 		<p>API integration and stats displayed here</p>
 		<p>Criteria to pull from API: ratings/reviews/genre or category</p>
+		<h6>API RESPONSE TEST:  <c:out value="${apiResponse[total_results]}"/></h6>
 	</div>
 
 
