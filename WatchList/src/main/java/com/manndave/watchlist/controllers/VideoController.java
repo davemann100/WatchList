@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 
 import com.manndave.watchlist.models.VideoModel;
 import com.manndave.watchlist.services.VideoService;
+//import com.manndave.watchlist.controllers.Keys;
 
 import jakarta.servlet.http.HttpSession;
 import jakarta.validation.Valid;
@@ -27,10 +28,13 @@ import jakarta.validation.Valid;
 public class VideoController {
 	
 	private String key = "test123";
+//	private Keys key;
 
+	
 	@Autowired
 	private VideoService videoService;
 
+	
 	// --- DASHBOARD (RENDER) ---
 	@GetMapping("/dashboard")
 	public String dashboard(HttpSession session, Model model) {
@@ -39,6 +43,9 @@ public class VideoController {
 			session.invalidate();
 			return "redirect:/";
 		} else {
+			
+//			System.out.println(key.getKey());
+			
 			List<VideoModel> allVideos = videoService.getAll();
 			model.addAttribute("videoList", allVideos);
 			return "dashboard.jsp";
@@ -102,6 +109,12 @@ public class VideoController {
 	                System.out.println(response.toString());
 	                // DATA STORED IN RESPONSE, SEND THIS TO JSP VIA MODEL MODEL
 	                model.addAttribute("apiResponse", response);
+	                System.out.println(response);
+	                
+	                // CREATE AN EXTRA MODEL AND SERVICE TO INSTANTIATE MOVIES FROM API
+	                // SEND THAT OBJ BACK TO JSP
+	                // 
+	                
 	            } else {
 	                System.out.println("API call failed with response code: " + responseCode);
 	            }
